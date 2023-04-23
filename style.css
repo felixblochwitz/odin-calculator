@@ -1,0 +1,104 @@
+div {
+  border: solid 5px #242933;
+  border-radius: 10px;
+}
+
+.calc-container {
+  aspect-ratio: 12/16;
+  height: 50vh;
+  /* positioning, 
+   * maybe want to use flexbox for this?*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* coloring */ 
+  background-color: #242933;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.display {
+  background-color: #d0e4e5;
+  height: 20%;
+
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+
+  margin: 1.5%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#display-top {
+  flex: 1;
+  border: 0px;
+}
+
+#display-bottom {
+  flex: 1;
+  border: 0px;
+  text-align: right;
+}
+
+.button-container {
+  flex: 1;
+  background-color: #242933;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.button-row {
+  border: 0px;
+  display: flex;
+
+  flex: 1;
+}
+
+button {
+  background-color: #EFEDE8;
+  flex: 1;
+  margin: .5%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+
+  padding: 0px;
+
+  border-radius: 5px;
+}
+
+/* Styling for certain Buttons */
+#del {
+  background-color: #D3567A;
+}
+
+#plus {
+  background-color: #EF8D5F;
+}
+
+#minus {
+  background-color: #EFD101;
+}
+
+#multi {
+  background-color: #4AB1CC;
+}
+
+#divide {
+  background-color: #7B6CA3;
+}
+
+.control-btn {
+  background-color: #9DA0AB;
+}
+/* other colors 
+ * yellow: #EFD101
+ * orange: #EF8D5F
+ * purple: #7B6CA3
+ * cyan: #4AB1CC
+ * red: #D3567A
+ */
