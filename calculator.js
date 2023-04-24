@@ -3,6 +3,8 @@ let display = document.querySelector(".display");
 let displayTop = document.querySelector("#display-top")
 let displayBottom = document.querySelector("#display-bottom")
 
+let ansResult = null;
+
 btns.forEach(button => button.addEventListener("click", function(e) {
   if (e.target.id === "del") {
     clearDisplay();
@@ -10,7 +12,13 @@ btns.forEach(button => button.addEventListener("click", function(e) {
   else if (e.target.textContent === "="){
     evaluate();
   }
-  else {
+  else if (e.target.textContent === "ANS") {
+    console.log(ansResult);
+    if ((displayTop.textContent.length + ansResult.toString().length) <= 15) {
+      writeToDisplay(ansResult);
+    }
+  }
+  else if (displayTop.textContent.length <= 15){
   let input = e.target.textContent;
   writeToDisplay(input);
   }
@@ -27,10 +35,16 @@ function clearDisplay() {
 
 function evaluate() {
   let term = displayTop.textContent;
-  term = term.replace("x", "*")
-  term = term.replace("÷", "/")
-  displayBottom.textContent = eval(term);
+  term = term.replace("x", "*");
+  term = term.replace("÷", "/");
+  let result = eval(term);
+  saveResultToAns(result);
+  displayBottom.textContent = result;
 }
+
+function saveResultToAns(lastResult) {
+  ansResult = lastResult;
+} 
 
 
 function setDisplayFontSize() {
