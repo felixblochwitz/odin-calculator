@@ -5,19 +5,27 @@ let displayBottom = document.querySelector("#display-bottom");
 
 let ansResult = null;
 
+let isEvaluated = false;
+
 btns.forEach((button) =>
   button.addEventListener("click", function (e) {
     if (e.target.id === "del") {
       clearDisplay();
     } else if (e.target.textContent === "=") {
       evaluate();
-    } else if (e.target.textContent === "ANS") {
-      if (displayTop.textContent.length + ansResult.toString().length <= 15) {
-        writeToDisplay(ansResult);
+    } else {
+      if (isEvaluated === true) {
+        clearDisplay("top");
+        isEvaluated = false;
       }
-    } else if (displayTop.textContent.length <= 15) {
-      let input = e.target.textContent;
-      writeToDisplay(input);
+      if (e.target.textContent === "ANS" && ansResult != null) {
+        if (displayTop.textContent.length + ansResult.toString().length <= 15) {
+          writeToDisplay(ansResult);
+        }
+      } else if (displayTop.textContent.length <= 15) {
+        let input = e.target.textContent;
+        writeToDisplay(input);
+      }
     }
   })
 );
@@ -26,18 +34,27 @@ function writeToDisplay(x) {
   displayTop.textContent += x;
 }
 
-function clearDisplay() {
-  displayTop.textContent = "";
-  displayBottom.textContent = "";
+function clearDisplay(location) {
+  if (location === "top") {
+    displayTop.textContent = "";
+    return;
+  } else if (location === "bottom") {
+    displayBottom.textContent = "";
+    return;
+  } else {
+    displayTop.textContent = "";
+    displayBottom.textContent = "";
+    return;
+  }
 }
 
 function evaluate() {
   let term = displayTop.textContent;
-  term = term.replace("x", "*");
-  term = term.replace("÷", "/");
+  term = term.replace("x", "*").replace("÷", "/");
   let result = eval(term);
   saveResultToAns(result);
   displayBottom.textContent = result;
+  isEvaluated = true;
 }
 
 function saveResultToAns(lastResult) {
