@@ -30,6 +30,8 @@ div {
 
   display: flex;
   flex-direction: column;
+
+  overflow: hidden;
 }
 
 #display-top {

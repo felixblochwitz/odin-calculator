@@ -20,17 +20,17 @@ btns.forEach((button) =>
       }
       if (e.target.textContent === "ANS" && ansResult != null) {
         if (displayTop.textContent.length + ansResult.toString().length <= 15) {
-          writeToDisplay(ansResult);
+          writeToDisplayTop(ansResult);
         }
       } else if (displayTop.textContent.length <= 15) {
         let input = e.target.textContent;
-        writeToDisplay(input);
+        writeToDisplayTop(input);
       }
     }
   })
 );
 
-function writeToDisplay(x) {
+function writeToDisplayTop(x) {
   displayTop.textContent += x;
 }
 
