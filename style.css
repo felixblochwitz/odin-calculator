@@ -62,6 +62,7 @@ div {
 
 button {
   background-color: #EFEDE8;
+  color: #000;
   flex: 1;
   margin: .5%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
